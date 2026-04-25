@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homin | Flyers & Graphics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
+      <div class="loader-progress-track"><span class="loader-progress-bar" id="loaderProgress"></span></div>
+    </div>
+  </div>
+  <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+  <div class="app-shell page-transition">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">EXPLORER</div>
+      <nav class="file-tree" aria-label="File navigation">
+        <a class="file-item" href="index.html"><i class="fa-regular fa-file-code"></i> index.html</a>
+
+        <button class="folder-toggle is-open" type="button" data-folder-toggle aria-expanded="true" aria-controls="portfolioFolder">
+          <span class="folder-chevron" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="folder-icon" aria-hidden="true">📁</span>
+          <span class="folder-label">portfolio</span>
+        </button>
+
+        <div class="folder-children is-open" id="portfolioFolder" data-folder-panel>
+          <a class="file-item child-file" href="websites.html"><span class="tree-prefix">├──</span>🌐 websites.html</a>
+          <a class="file-item child-file" href="powerpoints.html"><span class="tree-prefix">├──</span>📊 powerpoints.html</a>
+          <a class="file-item child-file active" href="flyers.html"><span class="tree-prefix">└──</span>🎨 flyers.html</a>
+        </div>
+
+        <a class="file-item" href="services.html"><i class="fa-regular fa-file"></i> services.html</a>
+      </nav>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div class="main-column">
+      <header class="editor-chrome">
+        <div class="page-tabs" aria-label="Open tabs">
+          <a class="tab-item" href="index.html">index.html</a>
+          <a class="tab-item active" href="flyers.html">
+            flyers.js
+            <span class="tab-dot" aria-hidden="true"></span>
+          </a>
+          <a class="tab-item" href="services.html">services.html</a>
+        </div>
+        <div class="breadcrumb"><span>portfolio</span> / <span>graphics</span> / <strong>flyers.html</strong></div>
+      </header>
+
+      <main class="content portfolio-content">
+        <section>
+          <h1 class="section-comment">// graphic_designs</h1>
+
+          <h2 class="section-comment sub-comment">// flyers_and_banners</h2>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="thumb-placeholder">Design Preview</div>
+              <h3>[Flyer Project Name]</h3>
+              <p>Type: [Event Flyer]</p>
+              <p>[Placeholder Description] Add campaign context, visual theme, and audience focus.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb-placeholder">Design Preview</div>
+              <h3>[Banner Project Name]</h3>
+              <p>Type: [Promo Graphic]</p>
+              <p>[Placeholder Description] Replace with social banner design summary and results.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb-placeholder">Design Preview</div>
+              <h3>[Campaign Visual]</h3>
+              <p>Type: [Social Banner]</p>
+              <p>[Placeholder Description] Describe what message this creative was designed to support.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="under-construction-wrap">
+          <h2 class="section-comment sub-comment">// brand_graphics</h2>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="thumb-placeholder">Brand Kit Preview</div>
+              <h3>[Brand Project Name]</h3>
+              <p>Type: [Logo Design]</p>
+              <p>[Placeholder Description] Explain the identity direction and the intended brand tone.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb-placeholder">Brand Kit Preview</div>
+              <h3>[Brand Project Name]</h3>
+              <p>Type: [Business Card Set]</p>
+              <p>[Placeholder Description] Add details about style choices and print-ready delivery.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb-placeholder">Brand Kit Preview</div>
+              <h3>[Brand Project Name]</h3>
+              <p>Type: [Brand Kit]</p>
+              <p>[Placeholder Description] Include what assets are inside this kit and how it is used.</p>
+              <a class="visit-btn" href="#">View Full Size</a>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="status-bar">
+    <div class="status-left">Richard Nimoh | Web Designer</div>
+    <div class="status-right"><span class="availability-dot" aria-hidden="true"></span>Available for work</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

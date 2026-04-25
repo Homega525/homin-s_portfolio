@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homin | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
+      <div class="loader-progress-track"><span class="loader-progress-bar" id="loaderProgress"></span></div>
+    </div>
+  </div>
+  <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+  <div class="app-shell page-transition">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">EXPLORER</div>
+      <nav class="file-tree" aria-label="File navigation">
+        <a class="file-item active" href="index.html"><i class="fa-regular fa-file-code"></i> index.html</a>
+
+        <button class="folder-toggle is-open" type="button" data-folder-toggle aria-expanded="true" aria-controls="portfolioFolder">
+          <span class="folder-chevron" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="folder-icon" aria-hidden="true">📁</span>
+          <span class="folder-label">portfolio</span>
+        </button>
+
+        <div class="folder-children is-open" id="portfolioFolder" data-folder-panel>
+          <a class="file-item child-file" href="websites.html"><span class="tree-prefix">├──</span>🌐 websites.html</a>
+          <a class="file-item child-file" href="powerpoints.html"><span class="tree-prefix">├──</span>📊 powerpoints.html</a>
+          <a class="file-item child-file" href="flyers.html"><span class="tree-prefix">└──</span>🎨 flyers.html</a>
+        </div>
+
+        <a class="file-item" href="services.html"><i class="fa-regular fa-file"></i> services.html</a>
+      </nav>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div class="main-column">
+      <header class="editor-chrome">
+        <div class="page-tabs" aria-label="Open tabs">
+          <a class="tab-item active" href="index.html">
+            index.html
+            <span class="tab-dot" aria-hidden="true"></span>
+          </a>
+          <a class="tab-item" href="websites.html">websites.js</a>
+          <a class="tab-item" href="services.html">services.html</a>
+        </div>
+        <div class="breadcrumb"><span>portfolio</span> / <span>src</span> / <strong>index.html</strong></div>
+      </header>
+
+      <main class="content home-content">
+        <section class="hero" id="top">
+          <p class="section-label">// home.tsx</p>
+          <h1 class="hero-headline">
+            <span class="hero-name"><span class="hero-word word-one">I'm</span> <span class="hero-word word-two">Homin,</span></span>
+            <span class="hero-role-line">your new <span class="hero-role">web designer</span>.<span class="cursor" aria-hidden="true">|</span></span>
+          </h1>
+          <p class="hero-subtext">I design clean, conversion-ready websites that feel sharp, fast, and unmistakably yours.</p>
+          <a class="primary-btn" href="websites.html">View My Work</a>
+        </section>
+
+        <section class="code-block-section">
+          <h2 class="section-comment">// about_me</h2>
+          <div class="code-block">
+            <div class="line-numbers" aria-hidden="true">
+              <span>01</span>
+              <span>02</span>
+              <span>03</span>
+            </div>
+            <div class="line-content">
+              <p>I build web experiences for founders, creators, and teams who want their digital presence to look premium and perform with purpose.</p>
+              <p>This is placeholder copy you can replace with your real story, values, and design approach in your own voice.</p>
+              <p>Use this space to share what makes your process different and why clients trust you to ship high-impact work.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials-section">
+          <h2 class="section-comment">// client_feedback</h2>
+          <div class="testimonials-row">
+            <article class="testimonial-card">
+              <p class="quote">"This looks great. The flow, visuals, and clarity made our dashboard and website instantly more professional."</p>
+              <p class="client-name">Alex A</p>
+              <p class="service-used">Dashboard &amp; Website Design</p>
+            </article>
+            <article class="testimonial-card">
+              <p class="quote">"[Placeholder testimonial message: add your client's real words here.]"</p>
+              <p class="client-name">[Client Name]</p>
+              <p class="service-used">[Service Used]</p>
+            </article>
+            <article class="testimonial-card">
+              <p class="quote">"[Placeholder testimonial message: include what result they were happiest about.]"</p>
+              <p class="client-name">[Client Name]</p>
+              <p class="service-used">[Service Used]</p>
+            </article>
+            <article class="testimonial-card">
+              <p class="quote">"[Placeholder testimonial message: mention timeline, communication, or design quality.]"</p>
+              <p class="client-name">[Client Name]</p>
+              <p class="service-used">[Service Used]</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+          <h2 class="section-comment">// let's_talk</h2>
+          <div class="code-block">
+            <div class="line-numbers" aria-hidden="true">
+              <span>01</span>
+              <span>02</span>
+              <span>03</span>
+              <span>04</span>
+            </div>
+            <div class="line-content">
+              <p>Ready to launch something that looks as good as it performs? Let's make it happen.</p>
+              <p>Email: <a href="mailto:[Your Email]">[Your Email]</a></p>
+              <p>
+                Platforms:
+                <a href="[Your Links]">Reddit</a> /
+                <a href="[Your Links]">Upwork</a> /
+                <a href="[Your Links]">LinkedIn</a>
+              </p>
+              <p>Replace all placeholders above with your real contact links.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="status-bar">
+    <div class="status-left">Richard Nimoh | Web Designer</div>
+    <div class="status-right"><span class="availability-dot" aria-hidden="true"></span>Available for work</div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
