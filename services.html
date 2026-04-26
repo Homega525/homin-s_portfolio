@@ -1,162 +1,247 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homin | Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <div class="loader-inner">
-      <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
-      <div class="loader-progress-track"><span class="loader-progress-bar" id="loaderProgress"></span></div>
-    </div>
-  </div>
-  <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
-  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
-
-  <div class="app-shell page-transition">
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-head">EXPLORER</div>
-      <nav class="file-tree" aria-label="File navigation">
-        <a class="file-item" href="index.html"><i class="fa-regular fa-file-code"></i> index.html</a>
-
-        <button class="folder-toggle is-open" type="button" data-folder-toggle aria-expanded="true" aria-controls="portfolioFolder">
-          <span class="folder-chevron" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
-          <span class="folder-icon" aria-hidden="true">📁</span>
-          <span class="folder-label">portfolio</span>
-        </button>
-
-        <div class="folder-children is-open" id="portfolioFolder" data-folder-panel>
-          <a class="file-item child-file" href="websites.html"><span class="tree-prefix">├──</span>🌐 websites.html</a>
-          <a class="file-item child-file" href="powerpoints.html"><span class="tree-prefix">├──</span>📊 powerpoints.html</a>
-          <a class="file-item child-file" href="flyers.html"><span class="tree-prefix">└──</span>🎨 flyers.html</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homin | Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="loader-inner">
+        <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
+        <div class="loader-progress-track">
+          <span class="loader-progress-bar" id="loaderProgress"></span>
         </div>
-
-        <a class="file-item active" href="services.html"><i class="fa-regular fa-file"></i> services.html</a>
-      </nav>
-    </aside>
-
-    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
-    <div class="main-column">
-      <header class="editor-chrome">
-        <div class="page-tabs" aria-label="Open tabs">
-          <a class="tab-item" href="index.html">index.html</a>
-          <a class="tab-item" href="websites.html">websites.js</a>
-          <a class="tab-item active" href="services.html">
-            services.html
-            <span class="tab-dot" aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="breadcrumb"><span>portfolio</span> / <span>src</span> / <strong>services.html</strong></div>
-      </header>
-
-      <main class="content services-content">
-        <section>
-          <h1 class="section-comment">// services_suite</h1>
-          <div class="service-tabs" role="tablist" aria-label="Service tabs">
-            <button class="service-tab active" data-target="web-design" role="tab" aria-selected="true">web_design.js</button>
-            <button class="service-tab" data-target="powerpoint" role="tab" aria-selected="false">powerpoint.js</button>
-            <button class="service-tab" data-target="graphics" role="tab" aria-selected="false">graphics.js</button>
-          </div>
-
-          <div class="tab-panel active" id="web-design" role="tabpanel">
-            <h2 class="section-comment panel-comment">// web_design_services</h2>
-            <p class="service-lead">Web design service focused on modern, conversion-ready pages with clear structure, polished visuals, and responsive performance.</p>
-            <div class="pricing-grid">
-              <article class="price-card">
-                <h3>Starter</h3>
-                <p class="price">$[Starter Price]</p>
-                <ul>
-                  <li>1-3 page website build</li>
-                  <li>Responsive layout (mobile + desktop)</li>
-                  <li>Basic SEO setup and launch support</li>
-                </ul>
-              </article>
-              <article class="price-card">
-                <h3>Standard</h3>
-                <p class="price">$[Standard Price]</p>
-                <ul>
-                  <li>Up to 6 pages + portfolio/blog layout</li>
-                  <li>Advanced UI polish and interactions</li>
-                  <li>Content structure support + revisions</li>
-                </ul>
-              </article>
-              <article class="price-card">
-                <h3>Pro</h3>
-                <p class="price">$[Pro Price]</p>
-                <ul>
-                  <li>Custom full-site design system</li>
-                  <li>Conversion-focused landing funnels</li>
-                  <li>Priority turnaround + ongoing updates</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-
-          <div class="tab-panel" id="powerpoint" role="tabpanel">
-            <h2 class="section-comment panel-comment">// presentation_design</h2>
-            <p class="service-lead">Custom PowerPoint and Google Slides presentations built for businesses, pitches, investor meetings, and events that need clear storytelling and polished visuals.</p>
-            <div class="service-subsection">
-              <h3>What's Included</h3>
-              <ul>
-                <li>Slide layout design with strong visual hierarchy</li>
-                <li>Icon sourcing and visual asset curation per topic</li>
-                <li>Brand color application across every slide</li>
-                <li>Up to [X Slides] with editable final files</li>
-              </ul>
-            </div>
-            <div class="pricing-grid compact-pricing">
-              <article class="price-card">
-                <h3>Starter</h3>
-                <p class="price">[Starter]</p>
-              </article>
-              <article class="price-card">
-                <h3>Standard</h3>
-                <p class="price">[Standard]</p>
-              </article>
-              <article class="price-card">
-                <h3>Pro</h3>
-                <p class="price">[Pro]</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="tab-panel" id="graphics" role="tabpanel">
-            <h2 class="section-comment panel-comment">// graphics_and_flyers</h2>
-
-            <div class="service-subsection">
-              <h3>Flyer Design</h3>
-              <p>Event flyers, promotional graphics, and social media banners tailored to your campaign goals and audience.</p>
-              <p class="price-inline">Pricing: [Flyer Starter] / [Flyer Standard] / [Flyer Pro]</p>
-            </div>
-
-            <div class="service-subsection">
-              <h3>Brand Graphics</h3>
-              <p>Logos, business cards, and compact brand kits that keep your visuals consistent across online and print assets.</p>
-              <p class="price-inline">Pricing: [Brand Starter] / [Brand Standard] / [Brand Pro]</p>
-            </div>
-          </div>
-        </section>
-      </main>
+      </div>
     </div>
-  </div>
+    <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
 
-  <footer class="status-bar">
-    <div class="status-left">Richard Nimoh | Web Designer</div>
-    <div class="status-right"><span class="availability-dot" aria-hidden="true"></span>Available for work</div>
-  </footer>
+    <div class="app-shell page-transition">
+      <button
+        class="mobile-menu-btn"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-  <script src="main.js"></script>
-</body>
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head">EXPLORER</div>
+        <nav class="file-tree" aria-label="File navigation">
+          <a class="file-item" href="index.html"
+            ><i class="fa-regular fa-file-code"></i> index.html</a
+          >
+
+          <button
+            class="folder-toggle is-open"
+            type="button"
+            data-folder-toggle
+            aria-expanded="true"
+            aria-controls="portfolioFolder"
+          >
+            <span class="folder-chevron" aria-hidden="true"
+              ><i class="fa-solid fa-chevron-right"></i
+            ></span>
+            <span class="folder-icon" aria-hidden="true">📁</span>
+            <span class="folder-label">portfolio</span>
+          </button>
+
+          <div
+            class="folder-children is-open"
+            id="portfolioFolder"
+            data-folder-panel
+          >
+            <a class="file-item child-file" href="websites.html"
+              ><span class="tree-prefix">├──</span>🌐 websites.html</a
+            >
+            <a class="file-item child-file" href="powerpoints.html"
+              ><span class="tree-prefix">├──</span>📊 powerpoints.html</a
+            >
+            <a class="file-item child-file" href="flyers.html"
+              ><span class="tree-prefix">└──</span>🎨 flyers.html</a
+            >
+          </div>
+
+          <a class="file-item active" href="services.html"
+            ><i class="fa-regular fa-file"></i> services.html</a
+          >
+        </nav>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <div class="main-column">
+        <header class="editor-chrome">
+          <div class="page-tabs" aria-label="Open tabs">
+            <a class="tab-item" href="index.html">index.html</a>
+            <a class="tab-item" href="websites.html">websites.js</a>
+            <a class="tab-item active" href="services.html">
+              services.html
+              <span class="tab-dot" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="breadcrumb">
+            <span>portfolio</span> / <span>src</span> /
+            <strong>services.html</strong>
+          </div>
+        </header>
+
+        <main class="content services-content">
+          <section>
+            <h1 class="section-comment">// services_suite</h1>
+            <div class="service-tabs" role="tablist" aria-label="Service tabs">
+              <button
+                class="service-tab active"
+                data-target="web-design"
+                role="tab"
+                aria-selected="true"
+              >
+                web_design.js
+              </button>
+              <button
+                class="service-tab"
+                data-target="powerpoint"
+                role="tab"
+                aria-selected="false"
+              >
+                powerpoint.js
+              </button>
+              <button
+                class="service-tab"
+                data-target="graphics"
+                role="tab"
+                aria-selected="false"
+              >
+                graphics.js
+              </button>
+            </div>
+
+            <div class="tab-panel active" id="web-design" role="tabpanel">
+              <h2 class="section-comment panel-comment">
+                // web_design_services
+              </h2>
+              <p class="service-lead">
+                Web design service focused on modern, conversion-ready pages
+                with clear structure, polished visuals, and responsive
+                performance.
+              </p>
+              <div class="pricing-grid">
+                <article class="price-card">
+                  <h3>Starter</h3>
+                  <p class="price">$[Starter Price]</p>
+                  <ul>
+                    <li>1-3 page website build</li>
+                    <li>Responsive layout (mobile + desktop)</li>
+                    <li>Basic SEO setup and launch support</li>
+                  </ul>
+                </article>
+                <article class="price-card">
+                  <h3>Standard</h3>
+                  <p class="price">$[Standard Price]</p>
+                  <ul>
+                    <li>Up to 6 pages + portfolio/blog layout</li>
+                    <li>Advanced UI polish and interactions</li>
+                    <li>Content structure support + revisions</li>
+                  </ul>
+                </article>
+                <article class="price-card">
+                  <h3>Pro</h3>
+                  <p class="price">$[Pro Price]</p>
+                  <ul>
+                    <li>Custom full-site design system</li>
+                    <li>Conversion-focused landing funnels</li>
+                    <li>Priority turnaround + ongoing updates</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="powerpoint" role="tabpanel">
+              <h2 class="section-comment panel-comment">
+                // presentation_design
+              </h2>
+              <p class="service-lead">
+                Custom PowerPoint and Google Slides presentations built for
+                businesses, pitches, investor meetings, and events that need
+                clear storytelling and polished visuals.
+              </p>
+              <div class="service-subsection">
+                <h3>What's Included</h3>
+                <ul>
+                  <li>Slide layout design with strong visual hierarchy</li>
+                  <li>Icon sourcing and visual asset curation per topic</li>
+                  <li>Brand color application across every slide</li>
+                  <li>Up to [X Slides] with editable final files</li>
+                </ul>
+              </div>
+              <div class="pricing-grid compact-pricing">
+                <article class="price-card">
+                  <h3>Starter</h3>
+                  <p class="price">[Starter]</p>
+                </article>
+                <article class="price-card">
+                  <h3>Standard</h3>
+                  <p class="price">[Standard]</p>
+                </article>
+                <article class="price-card">
+                  <h3>Pro</h3>
+                  <p class="price">[Pro]</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="graphics" role="tabpanel">
+              <h2 class="section-comment panel-comment">
+                // graphics_and_flyers
+              </h2>
+
+              <div class="service-subsection">
+                <h3>Flyer Design</h3>
+                <p>
+                  Event flyers, promotional graphics, and social media banners
+                  tailored to your campaign goals and audience.
+                </p>
+                <p class="price-inline">
+                  Pricing: [Flyer Starter] / [Flyer Standard] / [Flyer Pro]
+                </p>
+              </div>
+
+              <div class="service-subsection">
+                <h3>Brand Graphics</h3>
+                <p>
+                  Logos, business cards, and compact brand kits that keep your
+                  visuals consistent across online and print assets.
+                </p>
+                <p class="price-inline">
+                  Pricing: [Brand Starter] / [Brand Standard] / [Brand Pro]
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="status-bar">
+      <div class="status-left">Richard Nimoh | Web Designer</div>
+      <div class="status-right">
+        <span class="availability-dot" aria-hidden="true"></span>Available for
+        work
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
 </html>

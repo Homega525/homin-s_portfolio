@@ -1,6 +1,8 @@
 (function () {
   const body = document.body;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   const menuToggle = document.getElementById("menuToggle");
   const sidebarBackdrop = document.getElementById("sidebarBackdrop");
@@ -31,12 +33,16 @@
   });
 
   const setNavOrder = function () {
-    const navItems = Array.from(document.querySelectorAll(".sidebar .file-item, .sidebar .folder-toggle"));
+    const navItems = Array.from(
+      document.querySelectorAll(".sidebar .file-item, .sidebar .folder-toggle"),
+    );
     navItems.forEach(function (item, index) {
       item.style.setProperty("--nav-order", index);
     });
 
-    const childItems = Array.from(document.querySelectorAll(".folder-children .child-file"));
+    const childItems = Array.from(
+      document.querySelectorAll(".folder-children .child-file"),
+    );
     childItems.forEach(function (item, index) {
       item.style.setProperty("--child-order", index);
     });
@@ -46,7 +52,9 @@
   const folderToggles = document.querySelectorAll("[data-folder-toggle]");
   folderToggles.forEach(function (toggle) {
     const panelId = toggle.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : toggle.nextElementSibling;
+    const panel = panelId
+      ? document.getElementById(panelId)
+      : toggle.nextElementSibling;
     if (!panel) {
       return;
     }
@@ -122,7 +130,9 @@
       return;
     }
 
-    const phrase = loaderType ? loaderType.getAttribute("data-text") || "homin.dev" : "homin.dev";
+    const phrase = loaderType
+      ? loaderType.getAttribute("data-text") || "homin.dev"
+      : "homin.dev";
     const startTime = performance.now();
     let pageReady = document.readyState === "complete";
 
@@ -195,7 +205,13 @@
       currentX += (targetX - currentX) * 0.16;
       currentY += (targetY - currentY) * 0.16;
       cursorFollower.style.transform =
-        "translate3d(" + currentX + "px, " + currentY + "px, 0) translate(-50%, -50%) scale(" + hoverScale + ")";
+        "translate3d(" +
+        currentX +
+        "px, " +
+        currentY +
+        "px, 0) translate(-50%, -50%) scale(" +
+        hoverScale +
+        ")";
       window.requestAnimationFrame(animateFollower);
     };
 
@@ -222,7 +238,9 @@
   };
 
   const setupSectionTypewriter = function () {
-    const commentTargets = Array.from(document.querySelectorAll(".section-comment"));
+    const commentTargets = Array.from(
+      document.querySelectorAll(".section-comment"),
+    );
     commentTargets.forEach(function (el) {
       if (!el.dataset.fullText) {
         el.dataset.fullText = el.textContent;
@@ -274,7 +292,7 @@
       },
       {
         threshold: 0.48,
-      }
+      },
     );
 
     commentTargets.forEach(function (target) {
@@ -284,13 +302,15 @@
 
   const setupRevealAnimations = function () {
     const applyStagger = function (containerSelector, itemSelector, step) {
-      document.querySelectorAll(containerSelector).forEach(function (container) {
-        const items = Array.from(container.querySelectorAll(itemSelector));
-        items.forEach(function (item, index) {
-          item.classList.add("reveal-item");
-          item.style.setProperty("--reveal-delay", index * step + "ms");
+      document
+        .querySelectorAll(containerSelector)
+        .forEach(function (container) {
+          const items = Array.from(container.querySelectorAll(itemSelector));
+          items.forEach(function (item, index) {
+            item.classList.add("reveal-item");
+            item.style.setProperty("--reveal-delay", index * step + "ms");
+          });
         });
-      });
     };
 
     applyStagger(".project-grid", ".project-card", 80);
@@ -317,7 +337,7 @@
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     revealItems.forEach(function (item) {
@@ -407,7 +427,7 @@
             duration: 250,
             easing: "ease",
             fill: "forwards",
-          }
+          },
         );
 
         const incomingAnim = incoming.animate(
@@ -419,7 +439,7 @@
             duration: 250,
             easing: "ease",
             fill: "forwards",
-          }
+          },
         );
 
         incomingAnim.onfinish = function () {
@@ -438,7 +458,8 @@
         });
       });
 
-      const initialActive = group.querySelector(".service-tab.active") || tabs[0];
+      const initialActive =
+        group.querySelector(".service-tab.active") || tabs[0];
       if (initialActive) {
         tabs.forEach(function (tab) {
           tab.classList.remove("active");
@@ -453,7 +474,9 @@
         initialActive.classList.add("active");
         initialActive.setAttribute("aria-selected", "true");
 
-        const startPanel = document.getElementById(initialActive.getAttribute("data-target"));
+        const startPanel = document.getElementById(
+          initialActive.getAttribute("data-target"),
+        );
         if (startPanel) {
           startPanel.classList.add("active");
           startPanel.setAttribute("aria-hidden", "false");

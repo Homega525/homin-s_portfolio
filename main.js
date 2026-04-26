@@ -294,7 +294,7 @@
     };
 
     applyStagger(".project-grid", ".project-card", 80);
-    applyStagger(".testimonials-row", ".testimonial-card", 80);
+    applyStagger(".testimonials-set:not(.is-clone)", ".testimonial-card", 80);
 
     const revealItems = Array.from(document.querySelectorAll(".reveal-item"));
 
@@ -322,6 +322,220 @@
 
     revealItems.forEach(function (item) {
       observer.observe(item);
+    });
+  };
+
+  const setupTestimonialCarousel = function () {
+    const row = document.querySelector("[data-testimonials-carousel]");
+    if (!row) {
+      return;
+    }
+
+    const track = row.querySelector(".testimonials-track");
+    const originalSet = row.querySelector(".testimonials-set");
+    if (!track || !originalSet) {
+      return;
+    }
+
+    if (!track.querySelector(".testimonials-set.is-clone")) {
+      const cloneSet = originalSet.cloneNode(true);
+      cloneSet.classList.add("is-clone");
+      cloneSet.setAttribute("aria-hidden", "true");
+      cloneSet.querySelectorAll("a, button, input, textarea, select").forEach(function (element) {
+        element.setAttribute("tabindex", "-1");
+      });
+      track.appendChild(cloneSet);
+    }
+
+    const mobileQuery = window.matchMedia("(max-width: 700px)");
+    let isDragging = false;
+    let didDrag = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let resumeTimer = 0;
+
+    const pauseTrack = function () {
+      window.clearTimeout(resumeTimer);
+      track.classList.add("is-paused");
+    };
+
+    const resumeTrackSoon = function () {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(function () {
+        if (!isDragging) {
+          track.classList.remove("is-paused");
+        }
+      }, 2000);
+    };
+
+    row.addEventListener("pointerdown", function (event) {
+      if (mobileQuery.matches || (event.pointerType === "mouse" && event.button !== 0)) {
+        return;
+      }
+
+      isDragging = true;
+      didDrag = false;
+      startX = event.clientX;
+      startScrollLeft = row.scrollLeft;
+      row.classList.add("is-dragging");
+      pauseTrack();
+      row.setPointerCapture(event.pointerId);
+    });
+
+    row.addEventListener("pointermove", function (event) {
+      if (!isDragging) {
+        return;
+      }
+
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) > 4) {
+        didDrag = true;
+      }
+
+      row.scrollLeft = startScrollLeft - distance;
+      event.preventDefault();
+    });
+
+    const endDrag = function (event) {
+      if (!isDragging) {
+        return;
+      }
+
+      isDragging = false;
+      row.classList.remove("is-dragging");
+      if (row.hasPointerCapture(event.pointerId)) {
+        row.releasePointerCapture(event.pointerId);
+      }
+      resumeTrackSoon();
+    };
+
+    row.addEventListener("pointerup", endDrag);
+    row.addEventListener("pointercancel", endDrag);
+
+    row.addEventListener(
+      "click",
+      function (event) {
+        if (!didDrag) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        didDrag = false;
+      },
+      true
+    );
+  };
+
+  const setupTestimonialModal = function () {
+    const triggers = Array.from(document.querySelectorAll(".testimonial-media"));
+    if (!triggers.length) {
+      return;
+    }
+
+    const modal = document.createElement("div");
+    const modalContent = document.createElement("div");
+    const closeButton = document.createElement("button");
+    let closeTimer = 0;
+    let lastActiveElement = null;
+
+    modal.className = "testimonial-modal";
+    modal.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-label", "Expanded testimonial image");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("role", "dialog");
+
+    modalContent.className = "testimonial-modal-content";
+
+    closeButton.className = "testimonial-modal-close";
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "Close testimonial image");
+    closeButton.textContent = "X";
+
+    modal.appendChild(closeButton);
+    modal.appendChild(modalContent);
+    body.appendChild(modal);
+
+    const getInitials = function (trigger) {
+      const initials = trigger.getAttribute("data-testimonial-initials");
+      if (initials) {
+        return initials;
+      }
+
+      return trigger.textContent.trim().slice(0, 2).toUpperCase() || "CN";
+    };
+
+    const buildModalContent = function (trigger) {
+      const triggerImage = trigger.querySelector("img");
+      const imageSource =
+        trigger.getAttribute("data-testimonial-image") ||
+        (triggerImage ? triggerImage.currentSrc || triggerImage.src : "");
+
+      if (imageSource) {
+        const image = new Image();
+        image.className = "testimonial-modal-image";
+        image.src = imageSource;
+        image.alt =
+          trigger.getAttribute("data-testimonial-alt") ||
+          (triggerImage ? triggerImage.alt : "Testimonial image");
+        return image;
+      }
+
+      const placeholder = document.createElement("div");
+      placeholder.className = "testimonial-modal-placeholder";
+      placeholder.textContent = getInitials(trigger);
+      return placeholder;
+    };
+
+    const openModal = function (trigger) {
+      window.clearTimeout(closeTimer);
+      lastActiveElement = document.activeElement;
+      modalContent.replaceChildren(buildModalContent(trigger));
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      body.classList.add("testimonial-modal-open");
+
+      window.requestAnimationFrame(function () {
+        modal.classList.add("is-open");
+        closeButton.focus({ preventScroll: true });
+      });
+    };
+
+    const closeModal = function () {
+      if (!modal.classList.contains("is-open")) {
+        return;
+      }
+
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      body.classList.remove("testimonial-modal-open");
+
+      closeTimer = window.setTimeout(function () {
+        modalContent.replaceChildren();
+        if (lastActiveElement && typeof lastActiveElement.focus === "function") {
+          lastActiveElement.focus({ preventScroll: true });
+        }
+      }, reducedMotion ? 0 : 300);
+    };
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openModal(trigger);
+      });
+    });
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeModal();
+      }
     });
   };
 
@@ -497,6 +711,8 @@
   };
 
   initializeLoader();
+  setupTestimonialCarousel();
+  setupTestimonialModal();
   setupCursorFollower();
   setupSectionTypewriter();
   setupRevealAnimations();
