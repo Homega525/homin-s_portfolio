@@ -775,7 +775,7 @@ body.hero-ready .cursor {
 
 .testimonial-media {
   width: 100%;
-  aspect-ratio: 693 / 226;
+  aspect-ratio: var(--testimonial-media-ratio, 693 / 226);
   border: 2px solid #ffd000;
   border-radius: 12px;
   padding: 0;

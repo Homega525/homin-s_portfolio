@@ -11,6 +11,7 @@
   const loaderProgress = document.getElementById("loaderProgress");
   const topProgress = document.getElementById("pageProgress");
   const cursorFollower = document.getElementById("cursorFollower");
+  let heroRoleRotatorStarted = false;
 
   if (menuToggle) {
     menuToggle.addEventListener("click", function () {
@@ -84,6 +85,7 @@
       heroRole.classList.add("is-visible");
       heroCta.classList.add("is-visible");
       body.classList.add("hero-ready");
+      setupHeroRoleRotator();
       return;
     }
 
@@ -105,7 +107,78 @@
 
     window.setTimeout(function () {
       body.classList.add("hero-ready");
+      setupHeroRoleRotator();
     }, 760);
+  };
+
+  const setupHeroRoleRotator = function () {
+    const heroRole = document.querySelector(".hero .hero-role");
+    if (!heroRole || heroRoleRotatorStarted) {
+      return;
+    }
+
+    heroRoleRotatorStarted = true;
+    const phrases = ["web designer.", "PowerPoint designer.", "Flyer Designer"];
+    const holdDuration = 3500;
+    const eraseDelay = 45;
+    const typeDelay = 70;
+    const switchDelay = 180;
+    let phraseIndex = Math.max(0, phrases.indexOf(heroRole.textContent.trim()));
+
+    heroRole.textContent = phrases[phraseIndex];
+
+    const scheduleNextPhrase = function () {
+      window.setTimeout(function () {
+        erasePhrase(function () {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+
+          window.setTimeout(function () {
+            typePhrase(scheduleNextPhrase);
+          }, switchDelay);
+        });
+      }, holdDuration);
+    };
+
+    const erasePhrase = function (onComplete) {
+      const phrase = phrases[phraseIndex];
+      let characterIndex = phrase.length;
+
+      const eraseNextCharacter = function () {
+        characterIndex -= 1;
+        heroRole.textContent = phrase.slice(0, characterIndex);
+
+        if (characterIndex > 0) {
+          window.setTimeout(eraseNextCharacter, eraseDelay);
+          return;
+        }
+
+        onComplete();
+      };
+
+      eraseNextCharacter();
+    };
+
+    const typePhrase = function (onComplete) {
+      const phrase = phrases[phraseIndex];
+      let characterIndex = 0;
+      heroRole.textContent = "";
+
+      const typeNextCharacter = function () {
+        characterIndex += 1;
+        heroRole.textContent = phrase.slice(0, characterIndex);
+
+        if (characterIndex < phrase.length) {
+          window.setTimeout(typeNextCharacter, typeDelay);
+          return;
+        }
+
+        onComplete();
+      };
+
+      typeNextCharacter();
+    };
+
+    scheduleNextPhrase();
   };
 
   const initializeLoader = function () {
