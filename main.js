@@ -373,6 +373,11 @@
         return;
       }
 
+      if (event.target.closest(".testimonial-media")) {
+        didDrag = false;
+        return;
+      }
+
       isDragging = true;
       didDrag = false;
       startX = event.clientX;
@@ -428,8 +433,8 @@
   };
 
   const setupTestimonialModal = function () {
-    const triggers = Array.from(document.querySelectorAll(".testimonial-media"));
-    if (!triggers.length) {
+    const testimonialRow = document.querySelector("[data-testimonials-carousel]");
+    if (!testimonialRow || !testimonialRow.querySelector(".testimonial-media")) {
       return;
     }
 
@@ -518,10 +523,13 @@
       }, reducedMotion ? 0 : 300);
     };
 
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener("click", function () {
-        openModal(trigger);
-      });
+    testimonialRow.addEventListener("click", function (event) {
+      const trigger = event.target.closest(".testimonial-media");
+      if (!trigger || !testimonialRow.contains(trigger)) {
+        return;
+      }
+
+      openModal(trigger);
     });
 
     modal.addEventListener("click", function (event) {

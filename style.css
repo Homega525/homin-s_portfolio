@@ -774,8 +774,8 @@ body.hero-ready .cursor {
 }
 
 .testimonial-media {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 693 / 226;
   border: 2px solid #ffd000;
   border-radius: 12px;
   padding: 0;
@@ -813,6 +813,7 @@ body.hero-ready .cursor {
 }
 
 .client-name {
+  margin-top: auto;
   font-weight: 700;
   font-size: 0.96rem;
 }
@@ -842,7 +843,9 @@ body.hero-ready .cursor {
 }
 
 .testimonial-modal-content {
-  width: min(600px, calc(100vw - 4rem));
+  width: min(760px, calc(100vw - 4rem));
+  display: grid;
+  place-items: center;
   transform: scale(0.8);
   transition: transform 300ms ease;
 }
@@ -853,7 +856,7 @@ body.hero-ready .cursor {
 
 .testimonial-modal-image,
 .testimonial-modal-placeholder {
-  width: 100%;
+  max-width: 100%;
   max-height: calc(100vh - 8rem);
   border: 2px solid #ffd000;
   border-radius: 18px;
@@ -862,11 +865,14 @@ body.hero-ready .cursor {
 
 .testimonial-modal-image {
   display: block;
+  width: auto;
+  height: auto;
   object-fit: contain;
   background: #ffffff;
 }
 
 .testimonial-modal-placeholder {
+  width: 100%;
   aspect-ratio: 1;
   background: #f0f0f0;
   color: #999999;
