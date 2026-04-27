@@ -954,6 +954,17 @@ body.testimonial-modal-open {
   letter-spacing: 0.06em;
 }
 
+.project-thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #f7f4ec;
+}
+
 .project-card h3 {
   font-size: 1.05rem;
 }

@@ -1,135 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homin | Websites</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <div class="loader-inner">
-      <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
-      <div class="loader-progress-track"><span class="loader-progress-bar" id="loaderProgress"></span></div>
-    </div>
-  </div>
-  <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
-  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
-
-  <div class="app-shell page-transition">
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-head">EXPLORER</div>
-      <nav class="file-tree" aria-label="File navigation">
-        <a class="file-item" href="index.html"><i class="fa-regular fa-file-code"></i> index.html</a>
-
-        <button class="folder-toggle is-open" type="button" data-folder-toggle aria-expanded="true" aria-controls="portfolioFolder">
-          <span class="folder-chevron" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
-          <span class="folder-icon" aria-hidden="true">📁</span>
-          <span class="folder-label">portfolio</span>
-        </button>
-
-        <div class="folder-children is-open" id="portfolioFolder" data-folder-panel>
-          <a class="file-item child-file active" href="websites.html"><span class="tree-prefix">├──</span>🌐 websites.html</a>
-          <a class="file-item child-file" href="powerpoints.html"><span class="tree-prefix">├──</span>📊 powerpoints.html</a>
-          <a class="file-item child-file" href="flyers.html"><span class="tree-prefix">└──</span>🎨 flyers.html</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homin | Websites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+      <div class="loader-inner">
+        <p class="loader-type" id="loaderType" data-text="homin.dev"></p>
+        <div class="loader-progress-track">
+          <span class="loader-progress-bar" id="loaderProgress"></span>
         </div>
-
-        <a class="file-item" href="services.html"><i class="fa-regular fa-file"></i> services.html</a>
-      </nav>
-    </aside>
-
-    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
-    <div class="main-column">
-      <header class="editor-chrome">
-        <div class="page-tabs" aria-label="Open tabs">
-          <a class="tab-item" href="index.html">index.html</a>
-          <a class="tab-item active" href="websites.html">
-            websites.js
-            <span class="tab-dot" aria-hidden="true"></span>
-          </a>
-          <a class="tab-item" href="services.html">services.html</a>
-        </div>
-        <div class="breadcrumb"><span>portfolio</span> / <span>web</span> / <strong>websites.html</strong></div>
-      </header>
-
-      <main class="content portfolio-content">
-        <section>
-          <h1 class="section-comment">// websites_i_built</h1>
-          <div class="project-grid">
-            <article class="project-card">
-              <div class="thumb-placeholder">Thumbnail Placeholder</div>
-              <h3>[Project Name]</h3>
-              <p>[Project Description] Replace this with a concise summary of what the project solves and who it serves.</p>
-              <div class="tag-row">
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-              </div>
-              <a class="visit-btn" href="#">Visit Site</a>
-            </article>
-
-            <article class="project-card">
-              <div class="thumb-placeholder">Thumbnail Placeholder</div>
-              <h3>[Project Name]</h3>
-              <p>[Project Description] Add your strongest before/after story so this card clearly shows impact.</p>
-              <div class="tag-row">
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-              </div>
-              <a class="visit-btn" href="#">Visit Site</a>
-            </article>
-
-            <article class="project-card">
-              <div class="thumb-placeholder">Thumbnail Placeholder</div>
-              <h3>[Project Name]</h3>
-              <p>[Project Description] Highlight one key feature or measurable result here as placeholder guidance.</p>
-              <div class="tag-row">
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-                <span>[Tech Stack]</span>
-              </div>
-              <a class="visit-btn" href="#">Visit Site</a>
-            </article>
-          </div>
-        </section>
-
-        <section class="under-construction-wrap">
-          <h2 class="section-comment">// under_construction</h2>
-          <div class="project-grid">
-            <article class="project-card in-progress">
-              <span class="badge">🚧 In Progress</span>
-              <div class="thumb-placeholder">Preview Coming Soon</div>
-              <h3>[Project Name]</h3>
-              <p>[Project Description] This project is currently being built. Replace with your real upcoming launch notes.</p>
-            </article>
-
-            <article class="project-card in-progress">
-              <span class="badge">🚧 In Progress</span>
-              <div class="thumb-placeholder">Preview Coming Soon</div>
-              <h3>[Project Name]</h3>
-              <p>[Project Description] Use this block to tease what the final product will include.</p>
-            </article>
-          </div>
-        </section>
-      </main>
+      </div>
     </div>
-  </div>
+    <div class="top-progress" id="pageProgress" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
 
-  <footer class="status-bar">
-    <div class="status-left">Richard Nimoh | Web Designer</div>
-    <div class="status-right"><span class="availability-dot" aria-hidden="true"></span>Available for work</div>
-  </footer>
+    <div class="app-shell page-transition">
+      <button
+        class="mobile-menu-btn"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-  <script src="main.js"></script>
-</body>
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head">EXPLORER</div>
+        <nav class="file-tree" aria-label="File navigation">
+          <a class="file-item" href="index.html"
+            ><i class="fa-regular fa-file-code"></i> index.html</a
+          >
+
+          <button
+            class="folder-toggle is-open"
+            type="button"
+            data-folder-toggle
+            aria-expanded="true"
+            aria-controls="portfolioFolder"
+          >
+            <span class="folder-chevron" aria-hidden="true"
+              ><i class="fa-solid fa-chevron-right"></i
+            ></span>
+            <span class="folder-icon" aria-hidden="true">📁</span>
+            <span class="folder-label">portfolio</span>
+          </button>
+
+          <div
+            class="folder-children is-open"
+            id="portfolioFolder"
+            data-folder-panel
+          >
+            <a class="file-item child-file active" href="websites.html"
+              ><span class="tree-prefix">├──</span>🌐 websites.html</a
+            >
+            <a class="file-item child-file" href="powerpoints.html"
+              ><span class="tree-prefix">├──</span>📊 powerpoints.html</a
+            >
+            <a class="file-item child-file" href="flyers.html"
+              ><span class="tree-prefix">└──</span>🎨 flyers.html</a
+            >
+          </div>
+
+          <a class="file-item" href="services.html"
+            ><i class="fa-regular fa-file"></i> services.html</a
+          >
+        </nav>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <div class="main-column">
+        <header class="editor-chrome">
+          <div class="page-tabs" aria-label="Open tabs">
+            <a class="tab-item" href="index.html">index.html</a>
+            <a class="tab-item active" href="websites.html">
+              websites.js
+              <span class="tab-dot" aria-hidden="true"></span>
+            </a>
+            <a class="tab-item" href="services.html">services.html</a>
+          </div>
+          <div class="breadcrumb">
+            <span>portfolio</span> / <span>web</span> /
+            <strong>websites.html</strong>
+          </div>
+        </header>
+
+        <main class="content portfolio-content">
+          <section>
+            <h1 class="section-comment">// websites_i_built</h1>
+            <div class="project-grid">
+              <article class="project-card">
+                <img
+                  class="project-thumb"
+                  src="assets/websites/reverence-school.png"
+                  alt="Reverence school website preview"
+                  width="1366"
+                  height="768"
+                />
+                <h3>School Website</h3>
+                <p>
+                  Project built for the Reverence Preparatory and JHS school.
+                  Had fun working on this and partly got help from codex and
+                  hosted on Netlify. Even added a small CMS for the admin.
+                </p>
+                <div class="tag-row">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JS</span>
+                </div>
+                <a
+                  class="visit-btn"
+                  href="https://reverenceschool.live"
+                  target="_blank"
+                  >Visit Site</a
+                >
+              </article>
+
+              <article class="project-card">
+                <img
+                  class="project-thumb"
+                  src="assets/websites/plg-fan-club.png"
+                  alt="PLG Fan Club website preview"
+                  width="1366"
+                  height="768"
+                />
+                <h3>Fan Club Website</h3>
+                <p>
+                  Built this website for the PLG Fan Club. Involved creating a
+                  platform with a small stack and hosted on Netlify, with a
+                  small CMS addition as well to update content on the site with
+                  Dcap.
+                </p>
+                <div class="tag-row">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JS</span>
+                </div>
+                <a
+                  class="visit-btn"
+                  href="https://plgfanclub.com"
+                  target="_blank"
+                  >Visit Site</a
+                >
+              </article>
+            </div>
+          </section>
+
+          <section class="under-construction-wrap">
+            <h2 class="section-comment">// under_construction</h2>
+            <div class="project-grid">
+              <article class="project-card in-progress">
+                <span class="badge">🚧 In Progress</span>
+                <img
+                  class="project-thumb"
+                  src="assets/websites/h-medium.png"
+                  alt="H-Medium website preview"
+                  width="1366"
+                  height="768"
+                />
+                <h3>H - Medium</h3>
+                <p>
+                  Working on the design for an ecommerce website, looks mid
+                  right now but I never let that stop me. I will refine it till
+                  it becomes absolute art and then I will build it out and host
+                  it. Can't wait to share the final product!
+                </p>
+              </article>
+
+              <article class="project-card in-progress">
+                <span class="badge">🚧 In Progress</span>
+                <img
+                  class="project-thumb"
+                  src="assets/websites/my-portfolio.png"
+                  alt="My Portfolio website preview"
+                  width="1363"
+                  height="696"
+                />
+                <h3>My Portfolio</h3>
+                <p>
+                  Why would you add your own portolio site here? Weird, I know,
+                  but I will always be working on improving it so, it deserves a
+                  spot here as other projects do too.
+                </p>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="status-bar">
+      <div class="status-left">Richard Nimoh | Web Designer</div>
+      <div class="status-right">
+        <span class="availability-dot" aria-hidden="true"></span>Available for
+        work
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
 </html>
