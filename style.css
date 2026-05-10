@@ -28,7 +28,12 @@ body {
 body {
   font-family: "Inter", sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 20% 0%, #ffffff 0%, var(--bg) 58%, #fdfaf0 100%);
+  background: radial-gradient(
+    circle at 20% 0%,
+    #ffffff 0%,
+    var(--bg) 58%,
+    #fdfaf0 100%
+  );
   line-height: 1.55;
   overflow-x: hidden;
 }
@@ -63,7 +68,9 @@ a:hover {
 .top-progress.is-active {
   opacity: 1;
   transform: scaleX(1);
-  transition: transform 230ms linear, opacity 120ms ease;
+  transition:
+    transform 230ms linear,
+    opacity 120ms ease;
 }
 
 .page-loader {
@@ -73,7 +80,9 @@ a:hover {
   z-index: 110;
   display: grid;
   place-items: center;
-  transition: transform 520ms cubic-bezier(0.25, 0.9, 0.25, 1), opacity 420ms ease;
+  transition:
+    transform 520ms cubic-bezier(0.25, 0.9, 0.25, 1),
+    opacity 420ms ease;
 }
 
 .page-loader.is-exit {
@@ -219,7 +228,9 @@ body.loaded .sidebar {
   gap: 0.5rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.83rem;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   opacity: 0;
@@ -320,7 +331,9 @@ body.loaded .folder-toggle {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 280ms ease, opacity 200ms ease;
+  transition:
+    max-height 280ms ease,
+    opacity 200ms ease;
 }
 
 .folder-children.is-open {
@@ -333,7 +346,9 @@ body.loaded .folder-toggle {
   gap: 0.35rem;
   opacity: 0;
   transform: translate3d(0, -8px, 0);
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
   transition-delay: calc(var(--child-order, 0) * 50ms);
 }
 
@@ -470,7 +485,9 @@ body.loaded .folder-toggle {
 .hero .primary-btn.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1), opacity 520ms ease;
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 520ms ease;
 }
 
 .hero-role-line {
@@ -533,7 +550,9 @@ body.hero-ready .cursor {
   letter-spacing: 0.01em;
   position: relative;
   overflow: hidden;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .primary-btn::before,
@@ -555,7 +574,9 @@ body.hero-ready .cursor {
   margin-left: 0.35rem;
   transform: translate3d(-8px, 0, 0);
   opacity: 0;
-  transition: transform 220ms ease, opacity 220ms ease;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease;
 }
 
 .primary-btn:hover,
@@ -764,12 +785,17 @@ body.hero-ready .cursor {
   flex-direction: column;
   gap: 0.9rem;
   box-shadow: 0 12px 30px rgba(26, 26, 26, 0.055);
-  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
 }
 
 .testimonial-card:hover {
   border-color: #ffd000;
-  box-shadow: 0 18px 38px rgba(26, 26, 26, 0.08), 0 0 0 3px rgba(255, 208, 0, 0.16);
+  box-shadow:
+    0 18px 38px rgba(26, 26, 26, 0.08),
+    0 0 0 3px rgba(255, 208, 0, 0.16);
   transform: translateY(-6px);
 }
 
@@ -788,7 +814,9 @@ body.hero-ready .cursor {
   font-family: "JetBrains Mono", monospace;
   font-size: 1.45rem;
   font-weight: 700;
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition:
+    box-shadow 200ms ease,
+    transform 200ms ease;
 }
 
 .testimonial-media:hover,
@@ -925,7 +953,10 @@ body.testimonial-modal-open {
   padding: 0.9rem;
   display: grid;
   gap: 0.8rem;
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
 }
 
 .project-card:hover {
@@ -963,6 +994,82 @@ body.testimonial-modal-open {
   border: 1px solid var(--border);
   border-radius: 4px;
   background: #f7f4ec;
+  cursor: pointer;
+}
+
+.instagram-section .project-thumb {
+  aspect-ratio: 1 / 1;
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+
+.image-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-modal-content {
+  width: min(960px, calc(100vw - 3rem));
+  max-height: calc(100vh - 3rem);
+  display: grid;
+  place-items: center;
+  transform: scale(0.92);
+  transition: transform 250ms ease;
+}
+
+.image-modal.is-open .image-modal-content {
+  transform: scale(1);
+}
+
+.image-modal-image {
+  max-width: 100%;
+  max-height: calc(100vh - 6rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border: 2px solid #ffd000;
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  background: #ffffff;
+}
+
+.image-modal-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #cda300;
+  border-radius: 4px;
+  background: #ffd000;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.image-modal-close:hover,
+.image-modal-close:focus-visible {
+  background: #ffe15c;
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+body.image-modal-open {
+  overflow: hidden;
 }
 
 .project-card h3 {
@@ -1024,7 +1131,9 @@ body.testimonial-modal-open {
   width: var(--indicator-w);
   background: var(--accent-strong);
   transform: translate3d(var(--indicator-x), 0, 0);
-  transition: transform 250ms ease, width 250ms ease;
+  transition:
+    transform 250ms ease,
+    width 250ms ease;
 }
 
 .service-tab {
@@ -1036,7 +1145,9 @@ body.testimonial-modal-open {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background 180ms ease, border-color 180ms ease;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
 .service-tab:hover,
@@ -1122,7 +1233,9 @@ body.testimonial-modal-open {
 .reveal-item {
   opacity: 0;
   transform: translate3d(0, 22px, 0);
-  transition: opacity 560ms ease, transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 560ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 

@@ -1,6 +1,8 @@
 (function () {
   const body = document.body;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   const menuToggle = document.getElementById("menuToggle");
   const sidebarBackdrop = document.getElementById("sidebarBackdrop");
@@ -32,12 +34,16 @@
   });
 
   const setNavOrder = function () {
-    const navItems = Array.from(document.querySelectorAll(".sidebar .file-item, .sidebar .folder-toggle"));
+    const navItems = Array.from(
+      document.querySelectorAll(".sidebar .file-item, .sidebar .folder-toggle"),
+    );
     navItems.forEach(function (item, index) {
       item.style.setProperty("--nav-order", index);
     });
 
-    const childItems = Array.from(document.querySelectorAll(".folder-children .child-file"));
+    const childItems = Array.from(
+      document.querySelectorAll(".folder-children .child-file"),
+    );
     childItems.forEach(function (item, index) {
       item.style.setProperty("--child-order", index);
     });
@@ -47,7 +53,9 @@
   const folderToggles = document.querySelectorAll("[data-folder-toggle]");
   folderToggles.forEach(function (toggle) {
     const panelId = toggle.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : toggle.nextElementSibling;
+    const panel = panelId
+      ? document.getElementById(panelId)
+      : toggle.nextElementSibling;
     if (!panel) {
       return;
     }
@@ -195,7 +203,9 @@
       return;
     }
 
-    const phrase = loaderType ? loaderType.getAttribute("data-text") || "homin.dev" : "homin.dev";
+    const phrase = loaderType
+      ? loaderType.getAttribute("data-text") || "homin.dev"
+      : "homin.dev";
     const startTime = performance.now();
     let pageReady = document.readyState === "complete";
 
@@ -268,7 +278,13 @@
       currentX += (targetX - currentX) * 0.16;
       currentY += (targetY - currentY) * 0.16;
       cursorFollower.style.transform =
-        "translate3d(" + currentX + "px, " + currentY + "px, 0) translate(-50%, -50%) scale(" + hoverScale + ")";
+        "translate3d(" +
+        currentX +
+        "px, " +
+        currentY +
+        "px, 0) translate(-50%, -50%) scale(" +
+        hoverScale +
+        ")";
       window.requestAnimationFrame(animateFollower);
     };
 
@@ -295,7 +311,9 @@
   };
 
   const setupSectionTypewriter = function () {
-    const commentTargets = Array.from(document.querySelectorAll(".section-comment"));
+    const commentTargets = Array.from(
+      document.querySelectorAll(".section-comment"),
+    );
     commentTargets.forEach(function (el) {
       if (!el.dataset.fullText) {
         el.dataset.fullText = el.textContent;
@@ -347,7 +365,7 @@
       },
       {
         threshold: 0.48,
-      }
+      },
     );
 
     commentTargets.forEach(function (target) {
@@ -357,13 +375,15 @@
 
   const setupRevealAnimations = function () {
     const applyStagger = function (containerSelector, itemSelector, step) {
-      document.querySelectorAll(containerSelector).forEach(function (container) {
-        const items = Array.from(container.querySelectorAll(itemSelector));
-        items.forEach(function (item, index) {
-          item.classList.add("reveal-item");
-          item.style.setProperty("--reveal-delay", index * step + "ms");
+      document
+        .querySelectorAll(containerSelector)
+        .forEach(function (container) {
+          const items = Array.from(container.querySelectorAll(itemSelector));
+          items.forEach(function (item, index) {
+            item.classList.add("reveal-item");
+            item.style.setProperty("--reveal-delay", index * step + "ms");
+          });
         });
-      });
     };
 
     applyStagger(".project-grid", ".project-card", 80);
@@ -390,7 +410,7 @@
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     revealItems.forEach(function (item) {
@@ -414,9 +434,11 @@
       const cloneSet = originalSet.cloneNode(true);
       cloneSet.classList.add("is-clone");
       cloneSet.setAttribute("aria-hidden", "true");
-      cloneSet.querySelectorAll("a, button, input, textarea, select").forEach(function (element) {
-        element.setAttribute("tabindex", "-1");
-      });
+      cloneSet
+        .querySelectorAll("a, button, input, textarea, select")
+        .forEach(function (element) {
+          element.setAttribute("tabindex", "-1");
+        });
       track.appendChild(cloneSet);
     }
 
@@ -442,7 +464,10 @@
     };
 
     row.addEventListener("pointerdown", function (event) {
-      if (mobileQuery.matches || (event.pointerType === "mouse" && event.button !== 0)) {
+      if (
+        mobileQuery.matches ||
+        (event.pointerType === "mouse" && event.button !== 0)
+      ) {
         return;
       }
 
@@ -501,13 +526,18 @@
         event.stopPropagation();
         didDrag = false;
       },
-      true
+      true,
     );
   };
 
   const setupTestimonialModal = function () {
-    const testimonialRow = document.querySelector("[data-testimonials-carousel]");
-    if (!testimonialRow || !testimonialRow.querySelector(".testimonial-media")) {
+    const testimonialRow = document.querySelector(
+      "[data-testimonials-carousel]",
+    );
+    if (
+      !testimonialRow ||
+      !testimonialRow.querySelector(".testimonial-media")
+    ) {
       return;
     }
 
@@ -588,12 +618,18 @@
       modal.setAttribute("aria-hidden", "true");
       body.classList.remove("testimonial-modal-open");
 
-      closeTimer = window.setTimeout(function () {
-        modalContent.replaceChildren();
-        if (lastActiveElement && typeof lastActiveElement.focus === "function") {
-          lastActiveElement.focus({ preventScroll: true });
-        }
-      }, reducedMotion ? 0 : 300);
+      closeTimer = window.setTimeout(
+        function () {
+          modalContent.replaceChildren();
+          if (
+            lastActiveElement &&
+            typeof lastActiveElement.focus === "function"
+          ) {
+            lastActiveElement.focus({ preventScroll: true });
+          }
+        },
+        reducedMotion ? 0 : 300,
+      );
     };
 
     testimonialRow.addEventListener("click", function (event) {
@@ -603,6 +639,125 @@
       }
 
       openModal(trigger);
+    });
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+  };
+
+  const setupProjectImageModal = function () {
+    const projectGrid = document.querySelector(".project-grid");
+    if (!projectGrid) {
+      return;
+    }
+
+    const modal = document.createElement("div");
+    const modalContent = document.createElement("div");
+    const closeButton = document.createElement("button");
+    let closeTimer = 0;
+    let lastActiveElement = null;
+
+    modal.className = "image-modal";
+    modal.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-label", "Expanded project image");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("role", "dialog");
+
+    modalContent.className = "image-modal-content";
+
+    closeButton.className = "image-modal-close";
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "Close image preview");
+    closeButton.textContent = "×";
+
+    modal.appendChild(closeButton);
+    modal.appendChild(modalContent);
+    body.appendChild(modal);
+
+    const buildModalContent = function (src, alt) {
+      const image = new Image();
+      image.className = "image-modal-image";
+      image.src = src;
+      image.alt = alt || "Expanded project image";
+      return image;
+    };
+
+    const openModal = function (src, alt) {
+      window.clearTimeout(closeTimer);
+      lastActiveElement = document.activeElement;
+      modalContent.replaceChildren(buildModalContent(src, alt));
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      body.classList.add("image-modal-open");
+
+      window.requestAnimationFrame(function () {
+        modal.classList.add("is-open");
+        closeButton.focus({ preventScroll: true });
+      });
+    };
+
+    const closeModal = function () {
+      if (!modal.classList.contains("is-open")) {
+        return;
+      }
+
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      body.classList.remove("image-modal-open");
+
+      closeTimer = window.setTimeout(
+        function () {
+          modalContent.replaceChildren();
+          if (
+            lastActiveElement &&
+            typeof lastActiveElement.focus === "function"
+          ) {
+            lastActiveElement.focus({ preventScroll: true });
+          }
+        },
+        reducedMotion ? 0 : 300,
+      );
+    };
+
+    projectGrid.addEventListener("click", function (event) {
+      const clickedImage = event.target.closest("img.project-thumb");
+      if (clickedImage) {
+        event.preventDefault();
+        openModal(
+          clickedImage.currentSrc || clickedImage.src,
+          clickedImage.alt || "Expanded project image",
+        );
+        return;
+      }
+
+      const button = event.target.closest(".visit-btn");
+      if (button) {
+        const href = button.getAttribute("href");
+        if (!href || href === "#" || href === "javascript:void(0)") {
+          const card = button.closest(".project-card");
+          const cardImage = card
+            ? card.querySelector("img.project-thumb")
+            : null;
+          if (cardImage) {
+            event.preventDefault();
+            openModal(
+              cardImage.currentSrc || cardImage.src,
+              cardImage.alt || "Expanded project image",
+            );
+          }
+        }
+      }
     });
 
     modal.addEventListener("click", function (event) {
@@ -702,7 +857,7 @@
             duration: 250,
             easing: "ease",
             fill: "forwards",
-          }
+          },
         );
 
         const incomingAnim = incoming.animate(
@@ -714,7 +869,7 @@
             duration: 250,
             easing: "ease",
             fill: "forwards",
-          }
+          },
         );
 
         incomingAnim.onfinish = function () {
@@ -733,7 +888,8 @@
         });
       });
 
-      const initialActive = group.querySelector(".service-tab.active") || tabs[0];
+      const initialActive =
+        group.querySelector(".service-tab.active") || tabs[0];
       if (initialActive) {
         tabs.forEach(function (tab) {
           tab.classList.remove("active");
@@ -748,7 +904,9 @@
         initialActive.classList.add("active");
         initialActive.setAttribute("aria-selected", "true");
 
-        const startPanel = document.getElementById(initialActive.getAttribute("data-target"));
+        const startPanel = document.getElementById(
+          initialActive.getAttribute("data-target"),
+        );
         if (startPanel) {
           startPanel.classList.add("active");
           startPanel.setAttribute("aria-hidden", "false");
@@ -794,6 +952,7 @@
   initializeLoader();
   setupTestimonialCarousel();
   setupTestimonialModal();
+  setupProjectImageModal();
   setupCursorFollower();
   setupSectionTypewriter();
   setupRevealAnimations();
