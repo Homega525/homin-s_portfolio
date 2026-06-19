@@ -657,8 +657,8 @@
   };
 
   const setupProjectImageModal = function () {
-    const projectGrid = document.querySelector(".project-grid");
-    if (!projectGrid) {
+    const projectGrids = Array.from(document.querySelectorAll(".project-grid"));
+    if (!projectGrids.length) {
       return;
     }
 
@@ -730,34 +730,36 @@
       );
     };
 
-    projectGrid.addEventListener("click", function (event) {
-      const clickedImage = event.target.closest("img.project-thumb");
-      if (clickedImage) {
-        event.preventDefault();
-        openModal(
-          clickedImage.currentSrc || clickedImage.src,
-          clickedImage.alt || "Expanded project image",
-        );
-        return;
-      }
+    projectGrids.forEach(function (projectGrid) {
+      projectGrid.addEventListener("click", function (event) {
+        const clickedImage = event.target.closest("img.project-thumb");
+        if (clickedImage && projectGrid.contains(clickedImage)) {
+          event.preventDefault();
+          openModal(
+            clickedImage.currentSrc || clickedImage.src,
+            clickedImage.alt || "Expanded project image",
+          );
+          return;
+        }
 
-      const button = event.target.closest(".visit-btn");
-      if (button) {
-        const href = button.getAttribute("href");
-        if (!href || href === "#" || href === "javascript:void(0)") {
-          const card = button.closest(".project-card");
-          const cardImage = card
-            ? card.querySelector("img.project-thumb")
-            : null;
-          if (cardImage) {
-            event.preventDefault();
-            openModal(
-              cardImage.currentSrc || cardImage.src,
-              cardImage.alt || "Expanded project image",
-            );
+        const button = event.target.closest(".visit-btn");
+        if (button && projectGrid.contains(button)) {
+          const href = button.getAttribute("href");
+          if (!href || href === "#" || href === "javascript:void(0)") {
+            const card = button.closest(".project-card");
+            const cardImage = card
+              ? card.querySelector("img.project-thumb")
+              : null;
+            if (cardImage) {
+              event.preventDefault();
+              openModal(
+                cardImage.currentSrc || cardImage.src,
+                cardImage.alt || "Expanded project image",
+              );
+            }
           }
         }
-      }
+      });
     });
 
     modal.addEventListener("click", function (event) {
